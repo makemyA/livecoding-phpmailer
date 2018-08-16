@@ -29,28 +29,7 @@ Une fois composer installé, veuillez suivre les étapes suivantes:
 Vous pouvez cloner le répo du tutoriel à cet emplacement => [livecoding_phpmailer](https://github.com/makemyA/livecoding-phpmailer);
 ## Création du formulaire
 Ouvrez le fichier **index.php**
-
-
-
-```html
-        <div>
-            <label for="name-form">Veuillez indiquer votre nom</label>
-            <input type="text" id="name-form" required autofocus placeholder="Nom" name="name" pattern="[a-zA-Z]{2,50}">
-        </div>
-        <div>
-            <label for="firstname-form">Veuillez indiquer votre prénom</label>
-            <input type="text" id="firstname-form" required placeholder="Prénom" name="firstname" pattern="[a-zA-Z]{2,50}">
-        </div>
-        <div>
-            <label for="email-form">Veuillez indiquer votre adresse mail</label>
-            <input type="email" id="email-form" required placeholder="@" name="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,8}$" >
-        </div>
-        <div>
-        <label for="message">Veuillez indiquer votre message</label>
-        <input id="message"type="text" name="message" placeholder="votre message">
-        </div>
-        <div>
-```
+Nous allons nous attarder sur la partie du formulaire qui permet d'upload des fichiers.
 ```html
             <label for="upload-picture">Veuillez choisir une photo</label>
             <input type="file" name="picture"id="upload-picture" width="100" height="auto" accept=".png,.gif,.jpg,.jpeg" required>
