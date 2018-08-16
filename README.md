@@ -1,3 +1,9 @@
+
+
+<p style="text-align: center">
+<img src="img/phpmailer.png" width="500px" height="80px" alt="logo becode"/>
+</p>
+
 # Devenir un pro du mail avec PHP Mailer
 ## Installation
 
@@ -20,7 +26,7 @@ Une fois composer installé, veuillez suivre les étapes suivantes:
 1. Ouvrez votre dossier vendor créé lors de l'installation de composer. Vérifiez que le répertoire **php mailer** s'y retrouve ainsi que le fichier **autoload.php**.
 ## Création du répertoire de travail
 
-Vous pouvez cloner le répo du tutoriel à cet emplacement => [livecoding_phpmailer]("https://github.com/makemyA/livecoding-phpmailer");
+Vous pouvez cloner le répo du tutoriel à cet emplacement => [livecoding_phpmailer](https://github.com/makemyA/livecoding-phpmailer);
 ## Création du formulaire
 Ouvrez le fichier **index.php**
 
@@ -61,6 +67,8 @@ Un lien utile! https://github.com/PHPMailer/PHPMailer
 
 php mailer utilise ses propres fonctions. Il remplace donc la fonction **mail()** traditionnelle. Pour que ce changement soit effectif il faut ajouter en haut du fichier que l'on souhaite utiliser la classe PHPMAILER
 ```php
+<?php
+/*set php mailer class*/
 use PHPMailer\PHPMailer\PHPMailer;
 require '../vendor/autoload.php';
 ```
@@ -83,6 +91,7 @@ if(isset($_POST["submit"])){
     $name = $_POST['name'];
     $firstname = $_POST['firstname'];
     $email = $_POST['email'];
+    $message= $_POST["message"];
 ```
 A ce stade-ci il serait intéressant d'avoir une vue d'ensemble des variables conservées en mémoire par notre page cible à l'instant actuel.
 Pour ce faire, faisons en sorte de les voir
@@ -167,14 +176,14 @@ $mail = new PHPMailer;                              // Passing `true` enables ex
         $mail->SMTPSecure = 'tls';                            // Enable TLS encryption, `ssl` also accepted /*SSL et TLS sont deux protocoles cryptographiques qui permettent l’authentification, et le chiffrement des données qui transitent entre des serveurs, des machines et des applications en réseau (notamment lorsqu’un client se connecte à un serveur Web). Le SSL est le prédécesseur du TLS.*/
         $mail->Port = 587;
 ```
-
+Vient ensuite la phase ou l'on configure le header du mail.
 ```php
 //Sender
     $mail->setFrom('livecoding.becode@gmail.com', 'Paul Henrot');
     $mail->addAddress($email, $name);
     $mail->addCC('henrot.paul@hotmail.com', 'Admin');
 ```
-
+Ensuite le contenu... Par souci de clarté dans le code, le corps du mail est managé depuis le fichier **body.php** alors que la confirmation que le mail a bien été envoyé est géré par le fichier **confirmation.php**.
 ```php
   /*Content*/
     $mail->isHTML(true);
@@ -187,10 +196,23 @@ $mail = new PHPMailer;                              // Passing `true` enables ex
     $mail->addAttachment($file);
 ```
 ```php
-if(!$mail->send()) {
+ if(!$mail->send()) {
         echo 'Message was not sent.';
         echo 'Mailer error: ' . $mail->ErrorInfo;
       } else {
          header('Location: confirmation.php');
+        
+     
       } 
+}else{
+    echo "error";
+}
+?>
+
 ```
+
+Si ce tutoriel vous a aidé, merci de m'envoyer un message via le formulaire généré avec en upload une photo de vous ;)
+
+Merci et à Bientôt!
+
+Paul Henrot

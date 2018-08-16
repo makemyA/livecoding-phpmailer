@@ -10,7 +10,7 @@
 <div>
     <p>Merci <?php echo $_POST["firstname"]?>,</p>
     <p>Nous avons bien reçu votre demande en date du <?php echo $date?> à <?php echo $heure?> concernant:</p>
-    <p style="font-weight:700; font-size:1.5em"><?php echo $_POST["message"]?></p>
+    <p style="font-weight:700; font-size:1.5em"><?php echo $message?></p>
     <p>Nous vous répondrons dans les plus brefs délais</p>
     <p>L'équipe LIVE CODING</p>
 </div>
